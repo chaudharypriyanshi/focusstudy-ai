@@ -7,7 +7,11 @@ from google import genai
 # --------- CONFIG ----------
 
 
-client = genai.Client(api_key='your_key')
+API_KEY = os.getenv("GEMINI_API_KEY", "").strip()
+if not API_KEY:
+    raise RuntimeError("GEMINI_API_KEY not set. Run: set GEMINI_API_KEY=YOUR_KEY")
+
+client = genai.Client(api_key=API_KEY)
 
 # Use a current model (per Google docs)
 TEXT_MODEL = "gemini-2.5-flash"
@@ -128,3 +132,4 @@ def home():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
