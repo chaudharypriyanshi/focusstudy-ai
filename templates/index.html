@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FocusStudy AI</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>FocusStudy AI</h2>
+
+    <form method="POST" enctype="multipart/form-data" onsubmit="showLoader()">
+      <label>Answer mode</label>
+      <select name="mode">
+        <option value="exam">Exam Ready</option>
+        <option value="explain">Explain</option>
+        <option value="revision">Revision</option>
+      </select>
+
+      <label>Your question</label>
+      <textarea name="question" rows="4" placeholder="Type your study question..."></textarea>
+
+      <label>Upload typed PDF (optional)</label>
+      <input type="file" name="pdf" accept=".pdf">
+
+      <label>Upload handwritten notes image (optional)</label>
+      <input type="file" name="image" accept="image/*">
+
+      <button type="submit">Ask AI</button>
+    </form>
+
+    <div id="loader" class="loaderWrap" style="display:none;">
+      <div class="spinner"></div>
+      <div class="loaderText">Thinking...</div>
+    </div>
+
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+
+    {% if answer %}
+      <div class="answerCard">
+        <div class="answerHeader">AI Answer</div>
+        <div class="answerBody">{{ answer|safe }}</div>
+      </div>
+    {% endif %}
+  </div>
+
+  <script>
+    function showLoader(){
+      document.getElementById("loader").style.display = "flex";
+    }
+    // Hide loader after page loads (POST returns a new page)
+    window.onload = function(){
+      document.getElementById("loader").style.display = "none";
+    }
+  </script>
+</body>
+</html>

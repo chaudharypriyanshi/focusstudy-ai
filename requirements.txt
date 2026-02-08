@@ -1,0 +1,5 @@
+flask
+pillow
+PyPDF2
+google-genai
+gunicorn
