@@ -121,3 +121,32 @@ button:hover{
 @keyframes spin{
   100%{ transform:rotate(360deg); }
 }
+
+/* ✅ MOBILE RESPONSIVE FIX */
+@media (max-width: 600px) {
+  body{
+    display:block;
+    padding:12px;
+  }
+
+  .container{
+    width:95%;
+    margin-top:16px;
+    padding:16px;
+    border-radius:12px;
+  }
+
+  h2{
+    font-size:22px;
+    margin-bottom:14px;
+  }
+
+  select, input[type=file], textarea, button{
+    padding:12px;
+    font-size:15px;
+  }
+
+  .answerBody{
+    font-size:14px;
+  }
+}
